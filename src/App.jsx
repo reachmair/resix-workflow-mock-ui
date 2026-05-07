@@ -40,12 +40,15 @@ function App() {
       };
     }
 
+    const intakeStates = new Set(["Ingested", "Reconstructed", "Scored", "ProofAnchored"]);
+    const buyerStates = new Set(["DiligenceOpen", "WholeLoanReady", "MBSReady", "TokenCandidate"]);
+
     return {
-      intakePools: intakePools.filter((row) => row.status === globalState || globalState === "Ingested"),
+      intakePools: intakeStates.has(globalState) ? intakePools.filter((row) => row.status === globalState) : intakePools,
       reconstructionLoans,
       defectQueue,
       proofPackages,
-      diligenceAssets: diligenceAssets.filter((row) => row.eligibility === globalState || globalState === "DiligenceOpen")
+      diligenceAssets: buyerStates.has(globalState) ? diligenceAssets.filter((row) => row.eligibility === globalState) : diligenceAssets
     };
   }, [globalState]);
 

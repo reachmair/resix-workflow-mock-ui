@@ -1,6 +1,16 @@
 export const roles = ["Operations Analyst", "Data Ops Specialist", "Risk Reviewer", "Compliance Reviewer", "Capital Markets"];
 
-export const globalStates = ["All States", "Ingested", "Reconstructed", "Scored", "ProofAnchored", "DiligenceOpen", "TokenEligible"];
+export const globalStates = [
+  "All States",
+  "Ingested",
+  "Reconstructed",
+  "Scored",
+  "ProofAnchored",
+  "DiligenceOpen",
+  "WholeLoanReady",
+  "MBSReady",
+  "TokenCandidate"
+];
 
 export const intakePools = [
   { id: "POOL-104", seller: "BlueRidge Capital", sourceType: "Warehouse Fallout", schemaProfile: "MISMO 3.4", status: "Ingested", missingArtifacts: 12, schemaErrors: 3, integrity: "Hash Seeded" },
@@ -27,7 +37,59 @@ export const proofPackages = [
 ];
 
 export const diligenceAssets = [
-  { assetId: "AST-300", assetClass: "Non-QM", geography: "TX", riskProfile: "Moderate", eligibility: "DiligenceOnly", disclosure: "2 open cures", servicing: "Current" },
-  { assetId: "AST-301", assetClass: "NPL", geography: "FL", riskProfile: "High", eligibility: "NotReady", disclosure: "Assignment break", servicing: "Delinquent" },
-  { assetId: "AST-302", assetClass: "RPL", geography: "CA", riskProfile: "Low", eligibility: "TokenEligible", disclosure: "No critical defects", servicing: "Current" }
+  {
+    assetId: "AST-300",
+    assetClass: "Non-QM",
+    geography: "TX",
+    riskProfile: "Moderate",
+    eligibility: "DiligenceOnly",
+    distributionPath: "WholeLoan",
+    tokenizationStatus: "NotPlanned",
+    disclosure: "2 open cures",
+    servicing: "Current"
+  },
+  {
+    assetId: "AST-301",
+    assetClass: "NPL",
+    geography: "FL",
+    riskProfile: "High",
+    eligibility: "NotReady",
+    distributionPath: "MBS",
+    tokenizationStatus: "Candidate",
+    disclosure: "Assignment break",
+    servicing: "Delinquent"
+  },
+  {
+    assetId: "AST-302",
+    assetClass: "RPL",
+    geography: "CA",
+    riskProfile: "Low",
+    eligibility: "TokenCandidate",
+    distributionPath: "MBS",
+    tokenizationStatus: "Ready",
+    disclosure: "No critical defects",
+    servicing: "Current"
+  },
+  {
+    assetId: "AST-303",
+    assetClass: "Prime",
+    geography: "NY",
+    riskProfile: "Low",
+    eligibility: "WholeLoanReady",
+    distributionPath: "WholeLoan",
+    tokenizationStatus: "NotPlanned",
+    disclosure: "No critical defects",
+    servicing: "Current"
+  },
+  {
+    assetId: "AST-304",
+    assetClass: "RPL",
+    geography: "AZ",
+    riskProfile: "Moderate",
+    eligibility: "MBSReady",
+    distributionPath: "MBS",
+    tokenizationStatus: "Tokenized",
+    disclosure: "All cures completed",
+    servicing: "Current"
+  }
 ];

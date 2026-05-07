@@ -36,8 +36,9 @@ export default function AppShell({
       <div className="main-layout">
         <header className="top-header">
           <div>
-            <p className="kicker">Proof-First Workflow App Mock</p>
+            <p className="kicker">Integrity Layer Workflow App Mock</p>
             <h2>{pages.find((page) => page.key === activePage)?.label}</h2>
+            <p className="muted">Whole loan and MBS first, with selective tokenization as an optional downstream path.</p>
           </div>
           <FilterBar
             filters={[
